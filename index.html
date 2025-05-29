@@ -1,84 +1,613 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝐇aas </title>
-    
-    <!-- ميت<!-- تاج Open Graph لتحسين عرض الرابط في ديسكورد -->
-<meta property="og:title" content="𝐇aas">
-<meta property="og:description" content="اسمي هاص او محمود عمري 17 من اليمن صانع محتوى على اليوتيوب وصانع محتوى في سيرفر ريسبكت الحلم انه نوصل الا اكبر عدد مشتركين بمحبتكم وجهدكم ودعمكم وبس تعريف بسيط عن نفسي ">
-<meta property="og:image" content="https://media.discordapp.net/attachments/1354555894087815381/1377660860646031401/1745022421632.png?ex=6839c628&is=683874a8&hm=a8403698f4922d33e4efe9440d0efbc10d8244cc4eb61ce0f07ee5c0bef410a3&=&format=webp&quality=lossless&width=502&height=502">
-<meta property="og:url" content="https://respect-sart.vercel.app/">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-
-
+    <title>Haass</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Tajawal', sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: url('https://media.discordapp.net/attachments/1354555894087815381/1377660861010939924/1745022892179.png?ex=6839c628&is=683874a8&hm=047d628d71a3011f8b6a1002611eeff4995108b980e0ef5d28aa6ac8f2500755&=&format=webp&quality=lossless&width=894&height=502') no-repeat center center/cover;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f1729, #1a2955, #2d4a80);
             color: white;
+            overflow-x: hidden;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
         }
 
-        h1 {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
-        .login-btn {
-            background: linear-gradient(45deg, #4800ff, #4800ff);
-            color: black;
-            padding: 15px 30px;
-            font-size: 20px;
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(74, 144, 226, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-circle:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 15%; animation-delay: 2s; }
+        .floating-circle:nth-child(3) { width: 60px; height: 60px; top: 80%; left: 20%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 41, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(74, 144, 226, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #4a90e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #4a90e2, #357abd);
             font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover { transform: scale(1.1) rotate(5deg); }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(74, 144, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(26, 41, 85, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4a90e2, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-section {
+            background: rgba(26, 41, 85, 0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+            margin-bottom: 3rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid #4a90e2;
+            background: linear-gradient(45deg, #2d4a80, #4a90e2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #87ceeb;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+        }
+
+        .profile-image:hover { transform: scale(1.05) rotate(5deg); }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #4a90e2, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(74, 144, 226, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover { transform: translateY(-5px); }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4a90e2;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #87ceeb;
+            margin-top: 0.5rem;
+        }
+
+        /* قسم المقاطع */
+        .videos-section {
+            background: rgba(26, 41, 85, 0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+            margin-bottom: 3rem;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: rgba(74, 144, 226, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.3);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-thumbnail iframe {
+            width: 100%;
+            height: 100%;
             border: none;
             border-radius: 10px;
-            cursor: pointer;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(74, 144, 226, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .video-card:hover .play-overlay {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(74, 144, 226, 1);
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #87ceeb;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: #b0c4de;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .social-section {
+            text-align: center;
+            background: rgba(26, 41, 85, 0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(45deg, #4a90e2, #357abd);
+            color: white;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            box-shadow: 0px 4px 15px rgba(255, 204, 0, 0.6);
-            transition: all 0.3s ease-in-out;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: bold;
         }
-        .login-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 6px 20px rgba(255, 204, 0, 0.8);
+
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(74, 144, 226, 0.4);
         }
-        .content {
-            display: none;
+
+        .social-icon { font-size: 1.5rem; }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #4a90e2, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #4a90e2, #87ceeb);
+            border-radius: 2px;
+        }
+
+        .pulse { animation: pulse 2s infinite; }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(74, 144, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { gap: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .about-content { grid-template-columns: 1fr; text-align: center; }
+            .social-links, .videos-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            main { padding: 1rem; }
+            .profile-image { width: 200px; height: 200px; }
         }
     </style>
 </head>
 <body>
-    <div id="login-page">
-        <h1>𝐇aas Login</h1>
-        <a class="login-btn" id="login-btn" href="javascript:void(0);" onclick="loginWithDiscord()">تسجيل الدخول</a>
+    <div class="animated-bg">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
     </div>
 
-    <div id="content-page" class="content">
-        <h1>مرحبًا بك في الموقع!</h1>
-        <p>هذا المحتوى مرئي فقط بعد تسجيل الدخول.</p>
-    </div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo pulse">
+                <img src="https://media.discordapp.net/attachments/1354555894087815381/1377660860646031401/1745022421632.png?ex=6839c628&is=683874a8&hm=a8403698f4922d33e4efe9440d0efbc10d8244cc4eb61ce0f07ee5c0bef410a3&=&format=webp&quality=lossless&width=502&height=502" alt="الشعار" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <span style="display: none;">شعار</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="hero">
+                <h1>مرحباً بكم في قناتي</h1>
+                <p>أهلاً وسهلاً بكم في موقع هاص هاذا الموقع مجرد موقع تعريفي عني ايضا يوجد فيه حساباتي في مواقع التواصل الاجتماعي.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="about-section">
+                <div class="about-content">
+                    <div class="profile-image">
+                        <img src="https://media.discordapp.net/attachments/1354555894087815381/1377660860646031401/1745022421632.png?ex=6839c628&is=683874a8&hm=a8403698f4922d33e4efe9440d0efbc10d8244cc4eb61ce0f07ee5c0bef410a3&=&format=webp&quality=lossless&width=502&height=502" alt="صورتي الشخصية" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span style="display: none;">👤</span>
+                    </div>
+                    <div class="about-text">
+                        <h2>من أنا؟</h2>
+                        <p>اسمي هاص او محمود عمري 17 من اليمن صانع محتوى على اليوتيوب وصانع محتوى في سيرفر ريسبكت الحلم انه نوصل الا اكبر عدد مشتركين بمحبتكم وجهدكم ودعمكم بدأت رحلتي في عالم اليوتيوب من حبي للإبداع ومشاركة المعرفة مع الآخرين.</p>
+                        <p>أؤمن بأن المحتوى الجيد يمكن أن يغير حياة الناس ويلهمهم لتحقيق أحلامهم. لذلك أحرص على تقديم محتوى عالي الجودة يجمع بين المتعة والفائدة.</p>
+                        <p>انضموا إلي في هذه الرحلة المثيرة ولنكتشف معاً عالماً مليئاً بالإبداع والمعرفة!</p>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">700+</span>
+                        <span class="stat-label">مشترك</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">فيديو</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50000+</span>
+                        <span class="stat-label">مشاهدة</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="videos-section">
+                <h2 class="section-title">أفضل المقاطع لهاص</h2>
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <iframe src="https://www.youtube.com/embed/jSpmV2WHuFQ" allowfullscreen></iframe>
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <h3 class="video-title">مقطع مميز 1</h3>
+                        <p class="video-description">من أفضل المقاطع على القناة</p>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <iframe src="https://www.youtube.com/embed/w9uNO9AKI4Q" allowfullscreen></iframe>
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <h3 class="video-title">مقطع مميز 2</h3>
+                        <p class="video-description">محتوى رائع ومفيد</p>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <iframe src="https://www.youtube.com/embed/Rb2u9ZuWX4I" allowfullscreen></iframe>
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <h3 class="video-title">مقطع مميز 3</h3>
+                        <p class="video-description">تجربة ممتعة ومسلية</p>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <iframe src="https://www.youtube.com/embed/pkXHqypYGTs" allowfullscreen></iframe>
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <h3 class="video-title">مقطع مميز 4</h3>
+                        <p class="video-description">أحد أقوى المقاطع</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="social-section">
+                <h2 class="section-title">تابعوني على جميع المنصات</h2>
+                <p>ابقوا على تواصل معي واحصلوا على آخر الأخبار والمحتوى الحصري</p>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@HAAS-1" class="social-btn" target="_blank">
+                        <span class="social-icon">📺</span>
+                        <span>يوتيوب</span>
+                    </a>
+                    <a href="https://www.instagram.com/haas_1l?igsh=MTRka3A0NWhucHl6ZQ%3D%3D" class="social-btn" target="_blank">
+                        <span class="social-icon">📸</span>
+                        <span>إنستغرام</span>
+                    </a>
+                    <a href="https://x.com/HAAS_55?t=x_Z6FAB3b2HZ-ISpOYrJSg&s=09" class="social-btn" target="_blank">
+                        <span class="social-icon">🐦</span>
+                        <span>تويتر</span>
+                    </a>
+                    <a href="mailto:haasyout@gmail.com" class="social-btn">
+                        <span class="social-icon">📧</span>
+                        <span>ايميل</span>
+                    </a>
+                    <a href="https://discord.gg/38qCXvbYBn" class="social-btn" target="_blank">
+                        <span class="social-icon">💬</span>
+                        <span>ديسكورد</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@haas_1l" class="social-btn" target="_blank">
+                        <span class="social-icon">🎵</span>
+                        <span>تيك توك</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script>
-        const CLIENT_ID = "1351248031852269720";
-        const REDIRECT_URI = "https://sites.google.com/view/haas-1/%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9?authuser=0";
-        const SCOPE = "identify";
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-        function loginWithDiscord() {
-            const AUTH_URL = `https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${SCOPE}`;
-            window.open(AUTH_URL, "_blank", "width=500,height=600");
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-item, .social-btn, .video-card').forEach(item => {
+            observer.observe(item);
+        });
+
+        function createFloatingCircle() {
+            const circle = document.createElement('div');
+            circle.className = 'floating-circle';
+            const size = Math.random() * 100 + 50;
+            circle.style.width = size + 'px';
+            circle.style.height = size + 'px';
+            circle.style.left = Math.random() * 100 + '%';
+            circle.style.top = Math.random() * 100 + '%';
+            circle.style.animationDelay = Math.random() * 6 + 's';
+            circle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            
+            document.querySelector('.animated-bg').appendChild(circle);
+            
+            setTimeout(() => circle.remove(), 10000);
         }
+
+        setInterval(createFloatingCircle, 3000);
+
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(number => {
+                const target = parseInt(number.textContent.replace(/[^\d]/g, ''));
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    if (target >= 1000) {
+                        number.textContent = Math.floor(current / 1000) + 'K+';
+                    } else {
+                        number.textContent = Math.floor(current) + '+';
+                    }
+                }, 20);
+            });
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        statsObserver.observe(document.querySelector('.stats'));
     </script>
 </body>
 </html>
